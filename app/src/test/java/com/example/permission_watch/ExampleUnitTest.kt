@@ -1,4 +1,4 @@
-package com.example.safetyapplication
+package com.example.permission_watch
 
 import org.junit.Test
 

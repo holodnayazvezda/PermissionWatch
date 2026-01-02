@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.safetyapplication"
+    namespace = "com.example.permission_watch"
 
     compileSdk = 36
 
@@ -57,9 +57,12 @@ dependencies {
     implementation(libs.compose.ui.graphics)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material3)
+    implementation(libs.compose.icons.extended)
 
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.viewmodel.compose)
+
+    implementation(libs.navigation.compose)
 
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)

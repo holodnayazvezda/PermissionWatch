@@ -1,4 +1,4 @@
-package com.example.safetyapplication
+package com.example.permission_watch
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
