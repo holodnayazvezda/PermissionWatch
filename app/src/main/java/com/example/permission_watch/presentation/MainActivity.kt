@@ -13,6 +13,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.permission_watch.presentation.screens.navigation.NavigationGraph
 import com.example.permission_watch.presentation.screens.packages.PackagesViewModel
 import com.example.permission_watch.presentation.screens.package_details.PackageDetailsScreen
 import com.example.permission_watch.presentation.screens.packages.PackagesScreen
@@ -24,12 +25,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PermissionWatchTheme {
-                val navController = rememberNavController()
-                val viewModel: PackagesViewModel = viewModel()
-
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
-                }
+                NavigationGraph()
             }
         }
     }

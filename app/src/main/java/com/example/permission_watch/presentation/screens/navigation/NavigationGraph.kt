@@ -1,13 +1,13 @@
 package com.example.permission_watch.presentation.screens.navigation
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.permission_watch.presentation.screens.package_details.PackageDetailsScreen
 import com.example.permission_watch.presentation.screens.packages.PackagesScreen
 
@@ -22,17 +22,17 @@ fun NavigationGraph(
         composable(NavigationRoutes.Packages.route) {
             PackagesScreen(
                 onAppClick = { packageName ->
-                    navController.navigate("details/$packageName")
+                    navController.navigate("package_details/$packageName")
                 }
             )
         }
-        composable(NavigationRoutes.PackageDetails.route) { backStackEntry ->
-            val packageName = backStackEntry.arguments?.getString("packageName")
-            val appInfo = remember(packageName) {
-                packageName?.let { viewModel.getAppDetails(it) }
-            }
+        composable(
+            route = NavigationRoutes.PackageDetails.route,
+            arguments = listOf(
+                navArgument("packageName") { type = NavType.StringType }
+            )
+        ) {
             PackageDetailsScreen(
-                appInfo = appInfo,
                 onBackClick = { navController.popBackStack() }
             )
         }
