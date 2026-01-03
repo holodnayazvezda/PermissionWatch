@@ -12,7 +12,6 @@ import android.os.Process
 import android.provider.Settings
 import android.view.accessibility.AccessibilityManager
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.createSavedStateHandle
@@ -28,8 +27,7 @@ import kotlinx.coroutines.launch
 
 class PackageDetailsViewModel(
     val packageName: String,
-    application: Application,
-    savedStateHandle: SavedStateHandle,
+    application: Application
 ) : AndroidViewModel(application) {
     private val _fullPackageInfo = MutableStateFlow<FullPackageInfoModel?>(null)
     val fullPackageInfo: StateFlow<FullPackageInfoModel?> = _fullPackageInfo
@@ -121,7 +119,6 @@ class PackageDetailsViewModel(
                 PackageDetailsViewModel(
                     packageName = packageName,
                     application = application,
-                    savedStateHandle = savedStateHandle
                 )
             }
         }
