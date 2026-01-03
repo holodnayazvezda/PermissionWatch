@@ -54,7 +54,7 @@ class PackageDetailsViewModel(
             // for installed packages
             val installedPackages = pm.getInstalledPackages(PackageManager.GET_PERMISSIONS)
 
-            val packageInfo = pm.getPackageInfo(packageName, 0)
+            val packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS)
             // collect package info
             val appName = packageInfo.applicationInfo?.loadLabel(pm)?.toString() ?: packageInfo.packageName
             val permissions = packageInfo.requestedPermissions?.toList() ?: emptyList()
@@ -74,11 +74,7 @@ class PackageDetailsViewModel(
                 firstInstallTime = packageInfo.firstInstallTime,
                 lastUpdateTime = packageInfo.lastUpdateTime,
                 targetSdkVersion = appInfo?.targetSdkVersion ?: 0,
-                minSdkVersion = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    appInfo?.minSdkVersion ?: 0
-                } else {
-                    0
-                },
+                minSdkVersion = appInfo?.minSdkVersion ?: 0,
                 permissions = permissions,
                 isSystemApp = appInfo?.let { (it.flags and ApplicationInfo.FLAG_SYSTEM) != 0 } ?: false,
                 hasAccessibility = enabledAccessibilityServices.contains(pkgName),
